@@ -304,18 +304,34 @@ userAgentInput.addEventListener('input', function (e) {
 
 /* update notifications setting */
 
-var updateNotificationsCheckbox = document.getElementById('checkbox-update-notifications')
+var updateNotif = document.getElementById('checkbox-update-notifications')
 
 settings.get('updateNotificationsEnabled', function (value) {
   if (value === false) {
-    updateNotificationsCheckbox.checked = false
+    autoClose.checked = false
   } else {
-    updateNotificationsCheckbox.checked = true
+    autoClose.checked = true
   }
 })
 
-updateNotificationsCheckbox.addEventListener('change', function (e) {
+updateNotif.addEventListener('change', function (e) {
   settings.set('updateNotificationsEnabled', this.checked)
+})
+
+/* auto close setting */
+
+var autoClose = document.getElementById('auto-close-about-blank-blocked')
+
+settings.get('autoCloseAboutBlankBlocked', function (value) {
+  if (value === false) {
+    autoClose.checked = false
+  } else {
+    autoClose.checked = true
+  }
+})
+
+autoClose.addEventListener('change', function (e) {
+  settings.set('autoCloseAboutBlankBlocked', this.checked)
 })
 
 /* usage statistics setting */

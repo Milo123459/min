@@ -240,6 +240,8 @@
     "downloadStateFailed": "Failed",
     /* Update Notifications */
     "updateNotificationTitle": "A new version of Min is available",
+    /* Auto-Close settings */
+    "settingsAutoCloseAboutBlankBlocked": "Automatically close about:blanck#blocked",
     /* Autofill settings */
     "settingsPasswordAutoFillHeadline": "Password Auto-Fill",
     "settingsSelectPasswordManager": "Choose one of the supported password managers:",
