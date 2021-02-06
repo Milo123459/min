@@ -1,8 +1,6 @@
 var viewMap = {} // id: view
 var viewStateMap = {} // id: view state
-
 const BrowserView = electron.BrowserView
-
 function createView (id, webPreferencesString, boundsString, events) {
   const view = new BrowserView(JSON.parse(webPreferencesString))
 
@@ -16,7 +14,11 @@ function createView (id, webPreferencesString, boundsString, events) {
         e.preventDefault()
         args = args.slice(0, 3)
       }
-
+      console.log((event == "new-window" || event == "did-navigate") && e.sender.getURL() === "about:blank#blocked" && settings.get('autoCloseAboutBlankBlocked') === true, settings.get('autoCloseAboutBlankBlocked'), e.sender.getURL(), event)
+      if((event == "new-window" || event == "did-navigate") && e.sender.getURL() === "about:blank#blocked" && settings.get('autoCloseAboutBlankBlocked') === true) {
+          console.log('destroying');
+       return e.sender.destroy();
+      }
       mainWindow.webContents.send('view-event', {
         viewId: id,
         event: event,
